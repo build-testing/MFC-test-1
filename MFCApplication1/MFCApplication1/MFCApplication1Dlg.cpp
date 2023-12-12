@@ -20,15 +20,15 @@ class CAboutDlg : public CDialogEx
 public:
 	CAboutDlg();
 
-// Dialog Data
+	// Dialog Data
 #ifdef AFX_DESIGN_TIME
 	enum { IDD = IDD_ABOUTBOX };
 #endif
 
-	protected:
+protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
 
-// Implementation
+	// Implementation
 protected:
 	DECLARE_MESSAGE_MAP()
 };
@@ -76,6 +76,18 @@ BOOL CMFCApplication1Dlg::OnInitDialog()
 	CDialogEx::OnInitDialog();
 
 	// Add "About..." menu item to system menu.
+
+	/*CStringA csa = "123";
+	CStringA csb = "456";
+	CStringA strCookie;
+	strCookie.AppendFormat("%s=%s", (const char*)csa, (const char*)csb);
+	MessageBoxA(0, strCookie.GetBuffer(), 0, 0);*/
+
+	CStringW csa = L"123";
+	CStringW csb = L"456";
+	CStringW strCookie;
+	strCookie.AppendFormat(L"%s=%s", (LPCWSTR)csa, (LPCWSTR)csb);
+	::MessageBoxW(0, strCookie.GetBuffer(), 0, 0);
 
 	// IDM_ABOUTBOX must be in the system command range.
 	ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
@@ -159,5 +171,7 @@ HCURSOR CMFCApplication1Dlg::OnQueryDragIcon()
 void CMFCApplication1Dlg::OnBnClickedOk()
 {
 	// TODO: Add your control notification handler code here
-	CDialogEx::OnOK();
+	// CDialogEx::OnOK();
 }
+
+
