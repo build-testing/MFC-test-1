@@ -81,7 +81,7 @@ BOOL CMFCApplication1Dlg::OnInitDialog()
 	CStringA csb = "456";
 	CStringA strCookie;
 	strCookie.AppendFormat("%s=%s", csa, csb.GetBuffer());
-	MessageBoxA(0, strCookie.GetBuffer(), 0, 0);
+	::MessageBoxA(0, strCookie.GetBuffer(), 0, 0);
 
 	{
 		CStringW csa = L"bbb";
@@ -90,7 +90,17 @@ BOOL CMFCApplication1Dlg::OnInitDialog()
 		strCookie.AppendFormat(L"%s=%s", csa.GetBuffer(), csb);
 		::MessageBoxW(0, strCookie.GetBuffer(), 0, 0);
 	}
-	
+
+	{
+		CString csa = "qqq";
+		CString csb = "rrr";
+		CString strCookie;
+		strCookie.AppendFormat("%s=%s", csa, csb);
+		::MessageBoxA(0, strCookie.GetBuffer(), 0, 0);
+	}
+
+
+
 
 	// IDM_ABOUTBOX must be in the system command range.
 	ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
