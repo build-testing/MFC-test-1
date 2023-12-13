@@ -80,14 +80,14 @@ BOOL CMFCApplication1Dlg::OnInitDialog()
 	CStringA csa = "123";
 	CStringA csb = "456";
 	CStringA strCookie;
-	strCookie.AppendFormat("%s=%s", csa, csb);
+	strCookie.AppendFormat("%s=%s", csa, csb.GetBuffer());
 	MessageBoxA(0, strCookie.GetBuffer(), 0, 0);
 
 	{
-		CStringW csa = L"123";
-		CStringW csb = L"456";
+		CStringW csa = L"bbb";
+		CStringW csb = L"aaa";
 		CStringW strCookie;
-		strCookie.AppendFormat(L"%s=%s", csa, csb);
+		strCookie.AppendFormat(L"%s=%s", csa.GetBuffer(), csb);
 		::MessageBoxW(0, strCookie.GetBuffer(), 0, 0);
 	}
 	
