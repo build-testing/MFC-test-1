@@ -69,6 +69,8 @@ BEGIN_MESSAGE_MAP(CMFCApplication1Dlg, CDialogEx)
 END_MESSAGE_MAP()
 
 
+
+
 // CMFCApplication1Dlg message handlers
 
 BOOL CMFCApplication1Dlg::OnInitDialog()
@@ -77,27 +79,73 @@ BOOL CMFCApplication1Dlg::OnInitDialog()
 
 	// Add "About..." menu item to system menu.
 
-	CStringA csa = "123";
-	CStringA csb = "456";
-	CStringA strCookie;
-	strCookie.AppendFormat("%s=%s", csa, csb.GetBuffer());
-	::MessageBoxA(0, strCookie.GetBuffer(), 0, 0);
 
+	// CAtlString
+	// ATL::CStringT<wchar_t, ATL::StrTraitATL<wchar_t, ATL::ChTraitsCRT<wchar_t>>>
+	// ATL::CStringT<char, ATL::StrTraitATL<char, ATL::ChTraitsCRT<>>>
+	{
+		CAtlStringA csa = "123";
+		CAtlStringA strCookie;
+		strCookie.AppendFormat("%d, %s,%d,%d", 1, csa, 1, 1);
+		::MessageBoxA(0, strCookie.GetBuffer(), 0, 0);
+	}
+	{
+		CAtlStringW csa = L"123";
+		CAtlStringW strCookie;
+		strCookie.AppendFormat(L"%d, %s,%d,%d", 1, csa, 1, 1);
+		::MessageBoxW(0, strCookie.GetBuffer(), 0, 0);
+	}
+	{
+		CAtlString csa = L"123";
+		CAtlString strCookie;
+		strCookie.AppendFormat(L"%d, %s,%d,%d", 1, csa, 1, 1);
+		::MessageBoxW(0, strCookie.GetBuffer(), 0, 0);
+	}
+
+	
+
+	// CStringT
+	// ATL::CStringT<char, StrTraitMFC<>>
+	// ATL::CStringT<wchar_t, StrTraitMFC<wchar_t>>
+
+
+
+	{
+		CStringA csa = "123";
+		CStringA csb = "456";
+		CStringA strCookie;
+		strCookie.AppendFormat("%s=%s", csa, csb.GetBuffer());
+		::MessageBoxA(0, strCookie.GetBuffer(), 0, 0);
+	}
+	
+
+	{
+		CStringW csa = L"123";
+		CStringW csb = L"456";
+		CStringW strCookie;
+		strCookie.AppendFormat(L"%s=%s", csa, csb.GetBuffer());
+		::MessageBoxW(0, strCookie.GetBuffer(), 0, 0);
+	}
+
+	/*CString details;
+	CString kk=L"hehe";
+	details.Format(L"%s,%d",kk,3);
+	::MessageBoxW(0, details.GetBuffer(), 0, 0);
 	{
 		CStringW csa = L"bbb";
 		CStringW csb = L"aaa";
 		CStringW strCookie;
 		strCookie.AppendFormat(L"%s=%s", csa.GetBuffer(), csb);
 		::MessageBoxW(0, strCookie.GetBuffer(), 0, 0);
-	}
+	}*/
 
-	{
+	/*{
 		CString csa = "qqq";
 		CString csb = "rrr";
 		CString strCookie;
 		strCookie.AppendFormat("%s=%s", csa, csb);
 		::MessageBoxA(0, strCookie.GetBuffer(), 0, 0);
-	}
+	}*/
 
 
 
